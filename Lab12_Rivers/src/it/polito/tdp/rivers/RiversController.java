@@ -57,9 +57,22 @@ public class RiversController {
 
     @FXML
     void doSimula(ActionEvent event) {
-    	
-    	
-    	
+    	River r=boxRiver.getValue();
+    	if(r==null){
+    		txtResult.setText("Selezionare un fiume.");
+    		return;
+    	}
+    	int k=0;
+    	try{
+    		k=Integer.parseInt(txtK.getText());
+    	}catch(Exception e){
+    		txtResult.setText("Inserisci un valore numerico.\n");
+    	}
+    	if(k<=0){
+    		txtResult.setText("Inserire un valore valido di K.\n");
+    		return;
+    	}
+    	txtResult.appendText(model.generaSimulazione(k,r));
     }
     
     @FXML

@@ -49,6 +49,14 @@ public class Model {
 		}
 		return temp/mis.size();
 	}
-	
-	
+
+	public String generaSimulazione(int k, River r) {
+		float q=k*this.getValMedioFlusso(r)*3600*24*30;
+		float c=q/2;
+		Simulator s=new Simulator(q,c,this.getValMedioFlusso(r)*3600*24);
+		s.setCoda(r.getMisurazioni());
+		s.run();
+		
+		return s.getRisultato();	
+	}
 }
