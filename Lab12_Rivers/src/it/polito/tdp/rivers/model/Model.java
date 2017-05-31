@@ -8,7 +8,6 @@ import it.polito.tdp.rivers.dao.RiverDAO;
 public class Model {
 	
 	private List<River> fiumi;
-	private List<Flow> misurazioni;
 	RiverDAO dao;
 	
 	public Model(){
@@ -22,13 +21,14 @@ public class Model {
 	}
 	
 	public List<Flow> getMisurazioni(River r){
-		if(misurazioni==null)
-			misurazioni=dao.getMisurazioni(r);
-		return misurazioni;
+		if(r.getMisurazioni().isEmpty()){
+			for(Flow f: dao.getMisurazioni(r)){
+				r.addMisurazione(f);
+			}
+		}
+		return r.getMisurazioni();
 	}
-	public void setMisurazioni() {
-		misurazioni=null;
-	}
+	
 	public LocalDate getPrimaMisurazione(River r){
 		List<Flow> mis=this.getMisurazioni(r);
 		return mis.get(0).getData();

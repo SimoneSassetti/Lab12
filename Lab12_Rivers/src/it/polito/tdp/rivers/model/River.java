@@ -1,13 +1,17 @@
 package it.polito.tdp.rivers.model;
 
+import java.util.*;
+
 public class River {
 	private int id;
 	private String nome;
+	private List<Flow> misurazioni;
 	
 	public River(int id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		misurazioni=new ArrayList<Flow>();
 	}
 	public int getId() {
 		return id;
@@ -21,6 +25,13 @@ public class River {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	public void addMisurazione(Flow f){
+		misurazioni.add(f);
+	}
+	public List<Flow> getMisurazioni(){
+		return misurazioni;
+	}	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

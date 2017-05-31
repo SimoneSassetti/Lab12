@@ -44,7 +44,6 @@ public class RiversController {
     @FXML
     void doMostra(ActionEvent event) {
     	River r=boxRiver.getValue();
-    	model.setMisurazioni();
     	if(r==null){
     		txtResult.setText("Selezionare un fiume.");
     		return;
